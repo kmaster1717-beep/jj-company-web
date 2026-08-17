@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JJ컴퍼니</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="logo-container" id="logo-btn" style="cursor: pointer;">
+                <img src="./JJ Company.png" alt="JJ컴퍼니 로고" class="logo-img">
+                <span class="logo-text" data-ko="JJ컴퍼니" data-en="JJ Company">JJ컴퍼니</span>
+            </div>
+            <div class="header-lang">
+                <a href="#" id="lang-kr" class="active">KR</a>
+                <span class="divider">|</span>
+                <a href="#" id="lang-en">EN</a>
+            </div>
+        </div>
+        
+        <!-- Navigation Bar -->
+        <nav class="nav-bar">
+            <ul class="nav-menu">
+                <li><a href="#" id="menu-home" class="nav-item active" data-ko="홈" data-en="Home">홈</a></li>
+                <li><a href="#" id="menu-notice" class="nav-item" data-ko="공지사항" data-en="Notice">공지사항</a></li>
+                <li><a href="#" id="menu-board" class="nav-item" data-ko="게시판" data-en="Board">게시판</a></li>
+                <li><a href="#" id="menu-apps" class="nav-item" data-ko="앱 리스트" data-en="App List">앱 리스트</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="검색어를 입력하세요..." id="searchInput" data-ko-placeholder="검색어를 입력하세요..." data-en-placeholder="Search...">
+                <button type="button" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="main-container">
+        
+        <!-- 1. HOME VIEW (3-Column Layout) -->
+        <div id="view-home" class="spa-view">
+            <div class="grid-layout">
+                
+                <!-- Left Column: Notice Highlight -->
+                <section class="column column-left">
+                    <div class="column-header">
+                        <div class="header-flex">
+                            <h2 data-ko="공지사항" data-en="Notice">공지사항</h2>
+                            <button class="more-btn" id="go-notice-btn" aria-label="More Notices"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                        <span class="column-subtitle">Notice & Announcements</span>
+                    </div>
+                    <!-- Home Notice List -->
+                    <div class="card-list" id="home-notice-list">
+                        <!-- Loaded dynamically via JS -->
+                    </div>
+                </section>
+
+                <!-- Center Column: Dynamic Featured Board Post -->
+                <section class="column column-center">
+                    <div class="column-header">
+                        <div class="header-flex">
+                            <h2 data-ko="게시판" data-en="Board">게시판</h2>
+                            <button class="more-btn" id="go-board-btn" aria-label="More Posts"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                        <span class="column-subtitle">Community Board</span>
+                    </div>
+                    <div id="home-featured-board">
+                        <!-- Loaded dynamically via JS -->
+                    </div>
+                </section>
+
+                <!-- Right Column: App List Placeholders -->
+                <section class="column column-right">
+                    <div class="column-header">
+                        <h2 data-ko="앱 리스트" data-en="App List">앱 리스트</h2>
+                        <span class="column-subtitle">App Directory</span>
+                    </div>
+                    <div class="compact-list">
+                        <div class="empty-card" id="home-app-currency-btn" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px;">
+                            <div class="compact-content">
+                                <span class="skeleton-tag" style="background-color: #7928ca; color: #fff;">APP 01</span>
+                                <h4 class="compact-title" data-ko="실시간 환율 계산기" data-en="Currency Converter">실시간 환율 계산기</h4>
+                                <p class="compact-desc" data-ko="실시간 환율 API 정보를 활용한 프리미엄 환율 계산기 웹서비스입니다." data-en="Premium currency converter web service utilizing real-time exchange rate API.">실시간 환율 API 정보를 활용한 프리미엄 환율 계산기 웹서비스입니다.</p>
+                            </div>
+                            <div class="compact-img-placeholder" style="background-color: #f3e8ff; color: #7928ca;">
+                                <i class="fa-solid fa-coins"></i>
+                            </div>
+                        </div>
+                        <div class="empty-card compact-card-skeleton">
+                            <div class="compact-content">
+                                <span class="skeleton-tag">APP 02</span>
+                                <h4 class="compact-title" data-ko="서비스 준비 중" data-en="Preparing service">서비스 준비 중</h4>
+                                <p class="compact-desc" data-ko="새로운 모바일 앱 서비스가 여기에 추가될 예정입니다." data-en="A new mobile app service will be added here soon.">새로운 모바일 앱 서비스가 여기에 추가될 예정입니다.</p>
+                            </div>
+                            <div class="compact-img-placeholder">
+                                <i class="fa-solid fa-rocket"></i>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- 2. NOTICE BOARD VIEW (Dedicated Page) -->
+        <div id="view-notice" class="spa-view hidden">
+            <div class="board-container">
+                <div class="board-header">
+                    <div>
+                        <h1 class="board-title" data-ko="공지사항 게시판" data-en="Notice Board">공지사항 게시판</h1>
+                        <p class="board-subtitle" data-ko="JJ컴퍼니의 최신 공지사항과 소식을 전해드립니다." data-en="We deliver the latest announcements and news of JJ Company.">JJ컴퍼니의 최신 공지사항과 소식을 전해드립니다.</p>
+                    </div>
+                    <!-- Write Button for Admin -->
+                    <button class="btn btn-black" id="admin-write-btn">
+                        <i class="fa-solid fa-pen"></i> <span data-ko="글쓰기 (관리자)" data-en="Write (Admin)">글쓰기 (관리자)</span>
+                    </button>
+                </div>
+
+                <!-- Notice List Table -->
+                <div class="board-table-wrapper">
+                    <table class="board-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%;">No.</th>
+                                <th style="width: 60%; text-align: left;" data-ko="제목" data-en="Title">제목</th>
+                                <th style="width: 15%;" data-ko="작성자" data-en="Author">작성자</th>
+                                <th style="width: 15%;" data-ko="작성일" data-en="Date">작성일</th>
+                            </tr>
+                        </thead>
+                        <tbody id="board-notice-tbody">
+                            <!-- Dynamic Notice Rows Loaded via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. COMMUNITY BOARD VIEW (Active Page) -->
+        <div id="view-board" class="spa-view hidden">
+            <div class="board-container">
+                <div class="board-header">
+                    <div>
+                        <h1 class="board-title" data-ko="커뮤니티 게시판" data-en="Community Board">커뮤니티 게시판</h1>
+                        <p class="board-subtitle" data-ko="누구나 자유롭게 글을 작성할 수 있는 공간입니다." data-en="A space where anyone can freely write posts.">누구나 자유롭게 글을 작성할 수 있는 공간입니다.</p>
+                    </div>
+                    <!-- Write Button for Everyone -->
+                    <button class="btn btn-black" id="board-write-btn">
+                        <i class="fa-solid fa-pen"></i> <span data-ko="글쓰기" data-en="Write">글쓰기</span>
+                    </button>
+                </div>
+
+                <!-- Post List Table -->
+                <div class="board-table-wrapper">
+                    <table class="board-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%;">No.</th>
+                                <th style="width: 60%; text-align: left;" data-ko="제목" data-en="Title">제목</th>
+                                <th style="width: 15%;" data-ko="작성자" data-en="Author">작성자</th>
+                                <th style="width: 15%;" data-ko="작성일" data-en="Date">작성일</th>
+                            </tr>
+                        </thead>
+                        <tbody id="board-post-tbody">
+                            <!-- Dynamic Post Rows Loaded via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-apps" class="spa-view hidden">
+            <div class="board-container" style="padding: 20px; min-height: 700px; display: flex; flex-direction: column;">
+                <div class="board-header" style="margin-bottom: 20px;">
+                    <div>
+                        <h1 class="board-title" data-ko="환율 계산기" data-en="Currency Converter">환율 계산기</h1>
+                        <p class="board-subtitle" data-ko="실시간 API 연동 자동 환율 계산기 서비스입니다." data-en="Real-time API integrated automatic currency converter service.">실시간 API 연동 자동 환율 계산기 서비스입니다.</p>
+                    </div>
+                    <button class="btn btn-outline go-home-trigger" data-ko="홈으로 가기" data-en="Go Home">홈으로 가기</button>
+                </div>
+                <div style="flex-grow: 1; border-radius: 12px; overflow: hidden; border: 1px solid #e5e5e5; background: #fff; height: 600px; position: relative;">
+                    <iframe src="1.app Currency converter/index.html" style="width: 100%; height: 100%; border: none;" title="Currency Converter"></iframe>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Admin Write Modal -->
+    <div class="modal-backdrop hidden" id="write-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 data-ko="공지사항 작성 (관리자)" data-en="Write Notice (Admin)">공지사항 작성 (관리자)</h3>
+                <button class="modal-close" id="write-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="notice-title" data-ko="제목" data-en="Title">제목</label>
+                    <input type="text" id="notice-title" placeholder="제목을 입력하세요.">
+                </div>
+                <div class="form-group">
+                    <label for="notice-content" data-ko="내용" data-en="Content">내용</label>
+                    <textarea id="notice-content" rows="6" placeholder="내용을 입력하세요."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-gray" id="write-modal-cancel" data-ko="취소" data-en="Cancel">취소</button>
+                <button class="btn btn-black" id="write-modal-submit" data-ko="등록" data-en="Submit">등록</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Community Post Write Modal -->
+    <div class="modal-backdrop hidden" id="post-write-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 data-ko="게시글 작성" data-en="Write Post">게시글 작성</h3>
+                <button class="modal-close" id="post-write-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="post-title" data-ko="제목" data-en="Title">제목</label>
+                    <input type="text" id="post-title" placeholder="제목을 입력하세요.">
+                </div>
+                <div class="form-group">
+                    <label for="post-author" data-ko="작성자" data-en="Author">작성자</label>
+                    <input type="text" id="post-author" placeholder="이름을 입력하세요.">
+                </div>
+                <div class="form-group">
+                    <label for="post-content" data-ko="내용" data-en="Content">내용</label>
+                    <textarea id="post-content" rows="6" placeholder="내용을 입력하세요."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-gray" id="post-write-modal-cancel" data-ko="취소" data-en="Cancel">취소</button>
+                <button class="btn btn-black" id="post-write-modal-submit" data-ko="등록" data-en="Submit">등록</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notice View Modal -->
+    <div class="modal-backdrop hidden" id="detail-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <span class="skeleton-tag">NOTICE</span>
+                <button class="modal-close" id="detail-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <h2 class="detail-title" id="detail-title">공지사항 제목</h2>
+                <div class="detail-meta">
+                    <span id="detail-author">작성자: 관리자</span>
+                    <span class="divider">|</span>
+                    <span id="detail-date">작성일: 2026-08-17</span>
+                </div>
+                <div class="detail-content" id="detail-content">
+                    공지사항 내용이 표시됩니다.
+                </div>
+            </div>
+            <div class="modal-footer" style="display: flex; justify-content: space-between; width: 100%;">
+                <button class="btn" id="detail-modal-delete" data-ko="삭제" data-en="Delete" style="border: 1px solid #ff4d4d; color: #ff4d4d; background: none;">삭제</button>
+                <button class="btn btn-black" id="detail-modal-confirm" data-ko="확인" data-en="OK">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p data-ko="&copy; 2026 JJ컴퍼니. All Rights Reserved." data-en="&copy; 2026 JJ Company. All Rights Reserved.">&copy; 2026 JJ컴퍼니. All Rights Reserved.</p>
+            <p class="footer-sub" data-ko="이 웹페이지는 스크린샷 레이아웃을 기반으로 맞춤 제작되었습니다." data-en="This webpage was custom-built based on the screenshot layout.">이 웹페이지는 스크린샷 레이아웃을 기반으로 맞춤 제작되었습니다.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
