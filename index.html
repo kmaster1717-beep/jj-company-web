@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JJ컴퍼니</title>
+    <!-- PWA meta tags -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="JJ Company.png">
+    <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <!-- Top Header -->
@@ -194,6 +200,31 @@
 
     </main>
 
+    <!-- Admin Login Modal -->
+    <div class="modal-backdrop hidden" id="admin-login-modal">
+        <div class="modal-card" style="max-width: 400px;">
+            <div class="modal-header">
+                <h3 data-ko="관리자 인증" data-en="Admin Authentication">관리자 인증</h3>
+                <button class="modal-close" id="admin-login-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" style="display: flex; justify-content: center; padding: 40px 20px;">
+                <div id="g_id_onload"
+                     data-client_id="710542551936-fi6b06jsifuk7maemhbq79e1499826q3.apps.googleusercontent.com"
+                     data-callback="handleCredentialResponse"
+                     data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin"
+                     data-type="standard"
+                     data-size="large"
+                     data-theme="outline"
+                     data-text="sign_in_with"
+                     data-shape="rectangular"
+                     data-logo_alignment="left">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Admin Write Modal -->
     <div class="modal-backdrop hidden" id="write-modal">
         <div class="modal-card">
@@ -280,5 +311,14 @@
     </footer>
 
     <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => console.log('ServiceWorker registration successful'))
+                    .catch(err => console.log('ServiceWorker registration failed: ', err));
+            });
+        }
+    </script>
 </body>
 </html>

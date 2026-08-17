@@ -391,14 +391,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Admin Write Actions (Notices)
+    const adminLoginModal = document.getElementById('admin-login-modal');
+    const adminLoginModalClose = document.getElementById('admin-login-modal-close');
+
+    if (adminLoginModalClose) {
+        adminLoginModalClose.addEventListener('click', () => {
+            adminLoginModal.classList.add('hidden');
+        });
+    }
+
     adminWriteBtn.addEventListener('click', () => {
-        const password = prompt(currentLang === 'ko' ? "관리자 비밀번호를 입력해주세요:" : "Please enter the admin password:");
-        if (password === '1234') { // Simple admin password check
-            writeModal.classList.remove('hidden');
-        } else {
-            alert(currentLang === 'ko' ? "비밀번호가 틀렸습니다." : "Incorrect password.");
-        }
+        adminLoginModal.classList.remove('hidden');
     });
+
+    window.handleCredentialResponse = (response) => {
+        if (response.credential) {
+            adminLoginModal.classList.add('hidden');
+            writeModal.classList.remove('hidden');
+        }
+    };
 
     const closeWriteModal = () => {
         writeModal.classList.add('hidden');
