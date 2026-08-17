@@ -1,0 +1,22 @@
+{
+  "name": "JJ Currency Converter",
+  "short_name": "JJ Currency",
+  "description": "A premium, real-time currency converter with a purple aesthetic, synced with live exchange rates.",
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "background_color": "#110a1f",
+  "theme_color": "#8b5cf6",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
