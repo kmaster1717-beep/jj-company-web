@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A premium, real-time currency converter with a purple aesthetic, synced with live exchange rates.">
+    <title>JJ Currency Converter - Premium Real-time Exchange Rates</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <main class="app-container">
+        <header class="app-header">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fa-solid fa-coins logo-icon"></i>
+                    <h1>JJ CURRENCY</h1>
+                </div>
+                <button id="lang-btn" class="lang-btn" aria-label="Toggle Language">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>KO</span>
+                </button>
+            </div>
+            <p class="subtitle" id="subtitle-text">Real-time Automatic Currency Converter</p>
+        </header>
+
+        <section class="converter-card">
+            <!-- Amount Input -->
+            <div class="input-group">
+                <label for="amount-input" id="amount-label">Enter Amount</label>
+                <div class="input-wrapper">
+                    <input type="number" id="amount-input" value="1" min="0" placeholder="Enter amount...">
+                    <span class="currency-symbol" id="base-symbol">₩</span>
+                </div>
+            </div>
+
+            <!-- Currency Selection -->
+            <div class="selection-container">
+                <div class="select-box-wrapper">
+                    <label for="from-currency" id="from-label">From Currency</label>
+                    <div class="custom-select-container">
+                        <select id="from-currency" class="currency-select">
+                            <!-- JS dynamic options -->
+                        </select>
+                    </div>
+                </div>
+
+                <button id="swap-btn" class="swap-button" aria-label="Swap Currencies">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                </button>
+
+                <div class="select-box-wrapper">
+                    <label for="to-currency" id="to-label">To Currency</label>
+                    <div class="custom-select-container">
+                        <select id="to-currency" class="currency-select">
+                            <!-- JS dynamic options -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result Area -->
+            <div class="result-container">
+                <div class="result-header" id="result-header">Conversion Result</div>
+                <div class="result-value">
+                    <span id="converted-amount">0.00</span>
+                    <span id="target-symbol" class="result-currency">USD</span>
+                </div>
+                <div class="exchange-rate-info" id="rate-text">
+                    Loading exchange rates...
+                </div>
+            </div>
+        </section>
+
+        <footer class="app-footer">
+            <p class="update-time" id="update-time-text">Last Updated: -</p>
+            <p class="copyright">&copy; 2026 JJ Company. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
